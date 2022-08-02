@@ -14,21 +14,18 @@ class Root{
         this.speedY = Math.random() * 4 - 2;
         this.maxSize = Math.random() * 7 + 5;
         this.size = Math.random() * 1 +2;
-        this.vs = Math.random() * 0.2 + 0.05;
-        this.angleX = Math.random() * 6.2;
-        this.vax = Math.random() * 0.6 - 0.3;
-        this.angleY = Math.random() * 6.2;
-        this.vay = Math.random() * 0.6 - 0.3;
+        this.vs = Math.random() * 2 + 0.05;
+        this.angle = Math.random() * 6.2;
     }
 update(){
     this.x += this.speedX + Math.sin(this.angle);
     this.y += this.speedY + Math.sin(this.angle);
-    this.size =+ this.vs;
+    this.size += this.vs;
     this.angle += 0.1
     if(this.lightness <70) this.lightness =+ .25;
     if(this.size < this.maxSize){
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI *2);
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fillStyle = 'hsl(140,100%,+ this.lightness + %)';
         ctx.fill();
         ctx.stroke();
@@ -45,7 +42,7 @@ class Flower{
         root.update();
         }
 });
-window.addEventListener('mousedown', function()){
+window.addEventListener('mousedown', function(){
     drawing = true;
 });
 
