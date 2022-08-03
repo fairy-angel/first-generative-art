@@ -23,7 +23,6 @@ class Symbol{
       this.text = '';
       this.canvasHeight = canvasHeight;
 
-
     }
     draw(context){
         this.text = this.characters.charAt(Math.floor(Math.random()*this.characters.length));
@@ -76,9 +75,9 @@ function animate(timeStamp){
     if (timer > nextFrame){
         ctx.fillStyle = 'rgba(0, 0,0,0.05)';
         ctx.textAlign = 'center';
+        ctx.globalAlpha = 0.2;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = gradient; //'#0aff0a';
-        ctx.globalAlpha = 0.5;
         ctx.font = effect.fontSize + 'px monospace';
         effect.symbols.forEach(symbol => symbol.draw(ctx));
     } else{
@@ -87,6 +86,7 @@ function animate(timeStamp){
     requestAnimationFrame(animate);
 }
 animate(0);
+
 
 window.addEventListener('resize', function(){
     canvas.width = window.innerWidth;
@@ -103,13 +103,24 @@ canvas.addEventListener('mousemove', function(event){
     mouse.x = event.x;
     mouse.y= event.y;
     showMatrix();    
+
 });
 
 function showMatrix(){
     ctx.fillStyle = 'transparent';
-    ctx.lineWidth = 5;
+    ctx.lineWidth = 20;
     ctx.beginPath();
-    ctx.arc(mouse.x, mouse.y, 50, 0, Math.PI *2);
+    ctx.arc(mouse.x, mouse.y, 25, 0, Math.PI *2);
     ctx.fill();
     ctx.stroke();
+    ctx.closePath();
+    
 }
+
+if('mouse' !== 'true'){
+    addEventListener('mousemove', function(e){
+        const mouseMoved= e.target;
+        mouseMoved.setAttribute('listener', 'true');
+    //else?
+    })
+};
