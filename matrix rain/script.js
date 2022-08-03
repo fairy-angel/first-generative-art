@@ -12,7 +12,6 @@ gradient.addColorStop(0.8,'blue');
 gradient.addColorStop(1,'red');
 
 
-
 // classes encapsulate the code, syntax sugar 
 class Symbol{
     constructor(x, y, fontSize, canvasHeight){
@@ -35,7 +34,7 @@ class Symbol{
             this.y += 1;
         }
     }
-}
+};
 
 class Effect {
     constructor(canvasWidth, canvasHeight){
@@ -48,7 +47,6 @@ class Effect {
     }
     //initialize is a private method, cannot be called from the outside, abstraction
          //its job is to take the symbols and fill the object
-        
          #initialize(){
          for (let i = 0; i < this.columns; i++){
             this.symbols[i] = new Symbol(i, 0, this.fontSize, this.canvasHeight);
@@ -80,6 +78,7 @@ function animate(timeStamp){
         ctx.textAlign = 'center';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = gradient; //'#0aff0a';
+        ctx.globalAlpha = 0.5;
         ctx.font = effect.fontSize + 'px monospace';
         effect.symbols.forEach(symbol => symbol.draw(ctx));
     } else{
@@ -93,4 +92,24 @@ window.addEventListener('resize', function(){
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     effect.resize(canvas.width, canvas.height)
-})
+});
+
+//mouse functions
+const mouse = {
+    x: undefined,
+    y: undefined,
+}
+canvas.addEventListener('mousemove', function(event){
+    mouse.x = event.x;
+    mouse.y= event.y;
+    showMatrix();    
+});
+
+function showMatrix(){
+    ctx.fillStyle = 'transparent';
+    ctx.lineWidth = 5;
+    ctx.beginPath();
+    ctx.arc(mouse.x, mouse.y, 50, 0, Math.PI *2);
+    ctx.fill();
+    ctx.stroke();
+}
