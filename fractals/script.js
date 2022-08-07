@@ -81,7 +81,6 @@ window.addEventListener('load', function(){
       ctx.scale(0.95,0.95);
       ctx.rotate((Math.PI * 6)/sides);
       drawBranch(0); 
-
     }
     ctx.restore();
     randomizeButton.style.backgroundColor = color;

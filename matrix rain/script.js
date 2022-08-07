@@ -94,19 +94,40 @@ window.addEventListener('resize', function(){
     effect.resize(canvas.width, canvas.height)
 });
 
+
 //mouse functions
 const mouse = {
     x: undefined,
     y: undefined,
 }
+
+/*i need to figure out the proper way to reconfigure 
+    this line of code for a button to the entire canvas button.addEventListener("mousemove", (e) => {
+ 
+    const { x, y } = button.getBoundingClientRect();
+  button.style.setProperty("--x", e.clientX - x);
+  button.style.setProperty("--y", e.clientY - y);
+
+  and then do the same for the CSS variables
+
+  .shiny-button::after {
+  ...
+  width: 100px;
+  height: 100px;
+  top: calc(var(--y, 0) * 1px - 50px);
+  left: calc(var(--x, 0) * 1px - 50px);
+}
+})
+
+*/
 canvas.addEventListener('mousemove', function(event){
     mouse.x = event.x;
     mouse.y= event.y;
- //   showMatrix();    
+  //showMatrix();    
 
 });
-/*
-function showMatrix(){
+
+/* function showMatrix(){
     ctx.fillStyle = 'transparent';
     ctx.lineWidth = 20;
     ctx.beginPath();
