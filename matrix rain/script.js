@@ -75,7 +75,7 @@ function animate(timeStamp){
     if (timer > nextFrame){
         ctx.fillStyle = 'rgba(0, 0,0,0.05)';
         ctx.textAlign = 'center';
-        ctx.globalAlpha = 0.2;
+     //   ctx.globalAlpha = 0.2;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = gradient; //'#0aff0a';
         ctx.font = effect.fontSize + 'px monospace';
@@ -102,10 +102,10 @@ const mouse = {
 canvas.addEventListener('mousemove', function(event){
     mouse.x = event.x;
     mouse.y= event.y;
-    showMatrix();    
+ //   showMatrix();    
 
 });
-
+/*
 function showMatrix(){
     ctx.fillStyle = 'transparent';
     ctx.lineWidth = 20;
@@ -122,5 +122,6 @@ if('mouse' !== 'true'){
         const mouseMoved= e.target;
         mouseMoved.setAttribute('listener', 'true');
     //else?
-    })
+    }) 
 };
+  */
